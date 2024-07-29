@@ -6,7 +6,7 @@ import AWSXRay from 'aws-xray-sdk-core'
 const logger = createLogger('fileStorage/attachmentUtils.mjs')
 
 const s3Client = AWSXRay.captureAWSv3Client(new S3Client())
-const bucketName = process.env.ATTACHMENT_BUCKET_NAME
+const bucketName = process.env.ATTACHMENTS_S3_BUCKET
 const urlExpiration = parseInt(process.env.SIGNED_URL_EXPIRATION)
 
 export async function getUploadUrl(fileId) {

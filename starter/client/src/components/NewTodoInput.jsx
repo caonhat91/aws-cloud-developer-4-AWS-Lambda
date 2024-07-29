@@ -14,8 +14,7 @@ export function NewTodoInput({ onNewTodo }) {
   const onTodoCreate = async (event) => {
     try {
       const accessToken = await getAccessTokenSilently({
-        audience: `https://${auth0Domain}/api/v2/`,
-        scope: 'write:todos'
+        audience: `https://${auth0Domain}/api/v2/`
       })
       const dueDate = calculateDueDate()
       const createdTodo = await createTodo(accessToken, {

@@ -79,8 +79,7 @@ export function Todos() {
   async function onTodoDelete(todoId) {
     try {
       const accessToken = await getAccessTokenSilently({
-        audience: `https://${auth0Domain}/api/v2/`,
-        scope: 'delete:todo'
+        audience: `https://${auth0Domain}/api/v2/`
       })
       await deleteTodo(accessToken, todoId)
       setTodos(todos.filter((todo) => todo.todoId !== todoId))
@@ -93,8 +92,7 @@ export function Todos() {
     try {
       const todo = todos[pos]
       const accessToken = await getAccessTokenSilently({
-        audience: `https://${auth0Domain}/api/v2/`,
-        scope: 'write:todo'
+        audience: `https://${auth0Domain}/api/v2/`
       })
       await patchTodo(accessToken, todo.todoId, {
         name: todo.name,
@@ -130,8 +128,7 @@ export function Todos() {
     async function foo() {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: `https://${auth0Domain}/api/v2/`,
-          scope: 'read:todos'
+          audience: `https://${auth0Domain}/api/v2/`
         })
         console.log('Access token: ' + accessToken)
         const todos = await getTodos(accessToken)

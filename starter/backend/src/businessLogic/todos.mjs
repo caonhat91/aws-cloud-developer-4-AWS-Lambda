@@ -24,7 +24,7 @@ export async function createTodo(createTodoRequest, userId) {
         todoId: todoId,
         userId: userId,
         attachmentUrl: "",
-        dueDate: createTodoRest.dueDate,
+        dueDate: createTodoRequest.dueDate,
         createdAt: createdAt,
         name: createTodoRequest.name,
         done: false

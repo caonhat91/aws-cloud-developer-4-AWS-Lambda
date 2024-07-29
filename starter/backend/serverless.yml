@@ -19,14 +19,6 @@ provider:
     PROJECT_NAME: serverless-app
   logs: 
     restApi: true
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - xray:PutTelemetryRecords
-            - xray:PutTraceSegments
-          Resource: "*"
 
 functions:
 
@@ -48,6 +40,11 @@ functions:
         Action:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - "xray:PutTelemetryRecords"
+          - "xray:PutTraceSegments"
+        Resource: "*"
 
   # TODO: Configure this function
   CreateTodo:
@@ -68,6 +65,11 @@ functions:
           - dynamodb:GetItem
           - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - "xray:PutTelemetryRecords"
+          - "xray:PutTraceSegments"
+        Resource: "*"
 
   # TODO: Configure this function
   UpdateTodo:
@@ -88,6 +90,11 @@ functions:
           - dynamodb:UpdateItem
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - "xray:PutTelemetryRecords"
+          - "xray:PutTraceSegments"
+        Resource: "*"
 
   # TODO: Configure this function
   DeleteTodo:
@@ -104,6 +111,11 @@ functions:
         Action:
           - dynamodb:DeleteItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - "xray:PutTelemetryRecords"
+          - "xray:PutTraceSegments"
+        Resource: "*"
 
   # TODO: Configure this function
   GenerateUploadUrl:
@@ -125,6 +137,11 @@ functions:
           - dynamodb:UpdateItem
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - "xray:PutTelemetryRecords"
+          - "xray:PutTraceSegments"
+        Resource: "*"
 
 resources:
   Resources:
